@@ -20,6 +20,5 @@ public class NumbersController {
         return new Sum(sum);
     }
 
-    record Sum(int sum) {
-    }
+
 }
