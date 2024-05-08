@@ -7,13 +7,7 @@ import java.util.stream.Stream;
 @SpringBootApplication
 public class TestApplication {
     public static void main(String[] args) {
-        final Integer sum = Stream.of("1", "2", "3", "4", "5", "6", "7", "8")
-                                  .map(Integer::parseInt)
-                                  .map(i -> i + 1)
-                                  //.filter(i -> (i & 1) == 0)
-                                  .filter(i -> i % 2 == 0)
-                                  .reduce(0, (a, b) -> a + b);
-        System.out.println(sum);
+        Stream.of("1", "2", "3", "4", "5", "6", "7", "8");
     }
 
 }
