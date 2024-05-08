@@ -1,5 +1,6 @@
 package com.example.test;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +29,12 @@ class NumbersControllerTest {
 
         final UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromUriString("http://localhost:" + port + "/numbers/sum")
                                                                               .queryParam("numbers", "1,2,3,4,5");
-        final String body = restTemplate.getForEntity(uriComponentsBuilder.toUriString(),
-                                                      String.class,
+
+        final Sum body = restTemplate.getForEntity(uriComponentsBuilder.toUriString(),
+                                                      Sum.class,
                                                       Map.of("numbers", "1,2,3,4,5"))
                                         .getBody();
-        Assertions.assertEquals("{\"sum\":12}", body);
+        Assertions.assertEquals(new Sum(12), body);
     }
 
 }
